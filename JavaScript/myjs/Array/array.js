@@ -1,13 +1,12 @@
-const prompt = require('prompt-sync')()
+const prompt = require('prompt-sync')();
 
-//?การประกาศเรียกใช้ Array มี 2 แบบ 
+//?การประกาศเรียกใช้ Array มี 2 แบบ
 
-    var myArray = ['Name','Lasname','Address','Birth-date']
-    
-    for (i = 0; i < myArray.length; i++){
-        console.log(myArray[i]);
-    }
+var myArray = ['Name', 'Lasname', 'Address', 'Birth-date'];
 
+for (i = 0; i < myArray.length; i++) {
+  console.log(myArray[i]);
+}
 
 /*     var myArray2 = Array('Name','Lasname','Address','Birth-date')
     var myArray2 = new Array('Name','Lasname','Address','Birth-date')

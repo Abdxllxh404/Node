@@ -1,12 +1,12 @@
-const prompt = require('prompt-sync')()
+const prompt = require('prompt-sync')();
 
-    var square = (num) => {
-        if (!Number.isInteger(num)){
-            num = num**2
-            return num
-        } else {
-            return
-        } 
-    }
+var square = (num) => {
+  if (!Number.isInteger(num)) {
+    num = num ** 2;
+    return num;
+  } else {
+    return;
+  }
+};
 
-    //?การเรียกใช้ arrow function ก็เหมือนกับการเรียกใช้ปกติทั่วๆไป
+//?การเรียกใช้ arrow function ก็เหมือนกับการเรียกใช้ปกติทั่วๆไป
