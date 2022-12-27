@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+            width: 450px;
+            margin: auto;
+        }
+        input, button {
+            margin-bottom: 5px;
+        }
+    </style>
+    <script src="/axios/axios.min.js"></script>
+</head>
+<body>
+    <br>
+    <form method="post">
+        <input type="text" name="login" placeholder="Login"><br>
+        <input type="password" name="password" placeholder="Password"><br><br>
+        <button type="button" onclick="ajaxSubmit()">OK</button>
+        <br><br>
+        <div id="msg"></div>
+    </form>
+	<script>
+        function ajaxSubmit() {
+            let login = document.querySelector('[name="login"]').value
+            let params = new URLSearchParams()
+            params.append('login', login)
+            
+            axios({
+                url: '/login',
+                method: 'post',
+                data: params,
+                timeout: 5000,
+            }).then(result => {
+                var msg = ''
+                if (result.data.exist == true) {
+                    msg = 'ล็อกอิน: ' + login + ' มีผู้ใช้แล้ว'            
+                } else if (result.data.exist == false) {
+                    msg = 'ล็อกอิน: ' + login + ' ยังไม่มีผู้ใช้'
+                } else {
+                    msg = 'ข้อมูลไม่ถูกต้อง'
+                }
+                document.getElementById('msg').innerHTML = msg
+            }).catch(error => {
+                alert(error)
+            });
+        }    
+    </script>    
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form, div#result, a#index {
+            margin-left: 50px;
+        }
+    </style>
+</head>
+<body>
+    <br><br>
+    <form method="POST" action="/upload-resize" enctype="multipart/form-data">
+        <label>เลือกไฟล์รูปภาพเท่านั้น</label><br><br>
+        <input type="file" name="upfile" accept="image/*"><br><br>
+        <button>OK</button>
+    </form>
+    <br>
+    <a id="index" href="/">หน้าแรก</a>
+    <br><br>
+    
+    <% if (locals.file) { %>
+    <div id="result">
+        <hr>
+        <img src="<%= file %>" style="max-width: 120px;"><br>
+        name: <%= fileInfo.name %><br>
+        <div id="imgSize"></div>
+        <script>
+            let img = document.querySelector('img')
+            img.onload = function() {
+                document.querySelector('#imgSize').innerHTML = `
+                    width: ${this.width} <br>
+                    height: ${this.height}`
+            }
+        </script>
+    </div>
+    <% } %>
+    <br><br>
+</body>
+</html>

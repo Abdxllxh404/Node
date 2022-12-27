@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        label {
+            display: inline-block;
+            width: 150px;
+            margin-bottom: 15px;
+            margin-right: 5px;
+            text-align: right;
+        }
+
+        button, div#link {
+            margin-left: 160px;
+        }
+    </style>
+</head>
+<body>
+    <br>
+    <h4 style="margin-left: 160px;">แก้ไขข้อมูลสินค้า</h4>
+    <% if (locals.data) { %>
+    <form method="post" action="/edit-product/<%= data._id %>">
+        <label>ชื่อสินค้า</label>
+        <input type="text" name="name" value="<%= data.name %>" required><br>
+
+        <label>ราคา</label>
+        <input type="number" name="price" min="0" value="<%= data.price %>" required><br>
+        
+        <label>คงเหลือ</label>
+        <input type="number" name="stock" min="0" value="<%= data.stock %>" required><br>
+        <%
+            //กำหนดวันเดือนปีปัจจุบันในแบบ YYYY-MM-DD เท่านั้น
+            //เพื่อนำไปเป็นเติมเป็นค่าล่วงหน้าให้แก่อิลิเมนต์ชนิด date
+            let dt = new Date(Date.parse(data.date_added))
+            let m = dt.getMonth() + 1
+            //ถ้าเป็นเลขหลักเดียว ให้เติม 0 ข้างหน้า
+            m = (m > 10) ? m : '0'+m
+            let d = dt.getDate()
+            d = (d > 10) ? d : '0'+d
+            let da = `${dt.getFullYear()}-${m}-${d}`
+        %>
+        <label>วันที่เพิ่มสินค้า</label>
+        <input type="date" name="date_added" value="<%= da %>" required><br>
+
+        <label style="float: left;">รายละเอียดสินค้า</label>
+        <textarea name="description" cols="30" rows="3"><%= data.description %></textarea><br><br>
+
+        <button>ตกลง</button>
+    </form>
+    <% } %>
+    
+    <br><br>
+    <div id="link">
+        <a href="/show-products-edit">ยกเลิก</a> - 
+        <a href="/">หน้าแรก</a>
+    </div>
+    
+</body>
+</html>

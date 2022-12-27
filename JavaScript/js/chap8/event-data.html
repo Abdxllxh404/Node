@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function() {
+            let bt = document.getElementById('bt')
+            bt.onclick = function(event) {
+                let type = event.type
+                let target = event.target.nodeName
+                let text = event.target.innerText
+                alert(`You ${type}ed ${target.toLowerCase()} ${text}`)
+            }
+
+            let img = document.querySelector('img')
+            img.addEventListener('click', (event) => {
+                alert('Source image: ' + event.target.src)
+            })
+        }
+
+        function clickLink(event) {
+            alert('You clicked link: ' + event.srcElement.innerText)
+            event.preventDefault()
+		    //ปกติ เมื่อคลิกที่ลิงก์ หากกำหนด URL ให้กับ href มันจะเปิดไปยังเว็บไซต์แห่งนั้น 
+		    //ซึ่งเป็นพฤติกรรมแบบปกติ แต่หากเราต้องการยกเลิก ก็ให้เรียกเมธอด preventDefault()
+        }
+
+    </script>
+</head>
+<body onkeydown="alert(String.fromCharCode(event.keyCode))">
+    <button id="bt">OK</button><br><br>
+    <img src="js.png" width="80"><br><br>
+    <a href="http://www.example.com" onclick="clickLink(event)">Go to...</a><br>
+</body>
+</html>

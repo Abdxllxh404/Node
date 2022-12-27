@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 20px;
+        }
+        table {
+            border-collapse: collapse;
+            border: solid 2px gray;
+        }
+        td, th {
+            padding: 5px;
+        }
+        th {
+            background-color: #cde;
+        }
+
+        td img {
+            max-width: 80px;
+            margin: 5px;
+            border: solid 1px lightgray;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <a href="/">หน้าแรก</a><br><br>
+    <h4>รายการข้อมูล</h4>
+    <% if (locals.data) { %>
+    <table border="1">
+        <tr><th>ชื่อ</th><th>ราคา</th><th>รูปภาพ</th></tr>
+        <% for (d of data) { %>
+        <tr>
+            <td><%= d.name %></td>
+            <td><%= d.price %></td>
+            <td>
+            <%
+                //เราคั่นชื่อภาพด้วย , ดังนั้น ต้องแยกชื่อภาพออกจากกัน
+                let imgs = d.images.split(',')
+                for (i of imgs) {
+            %>
+                    <img src="/product-images/<%= i %>">
+            <%  } %>
+            </td>
+        </tr>
+        <% } %>
+    </table>
+    <% } %>
+</body>
+</html>

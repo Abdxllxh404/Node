@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+	<script>
+        /*
+		window.onload = () => {
+ 			document.getElementById('sp').innerText = 'World'
+
+			let bt = document.getElementById('bt')
+			bt.onclick = function() {
+				alert('You clicked button')
+			}
+		}
+        */
+
+        window.addEventListener('load', function() {
+            document.getElementById('sp').innerText = 'World2'
+
+            let bt = document.getElementById('bt')
+            bt.onclick = function() {
+                alert('You clicked button')
+            }
+        })
+
+	</script>	
+</head>
+<body>
+    Hello <span id="sp"></span><br><br>
+    <button id="bt">Test</button>
+</body>
+</html>

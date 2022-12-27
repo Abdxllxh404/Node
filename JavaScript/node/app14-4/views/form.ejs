@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form, div#data {
+            width: 450px;
+            margin: auto;
+        }
+        input, select {
+            margin: 7px;
+        }
+        span {
+            display: inline-block;
+            width: 60px;
+        }
+        button {
+            margin-left: 70px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <br>
+    <% if (!locals.data) { %>
+    <form method="post" action="/form">
+        <span>Fruit:</span>
+        <input type="checkbox" name="fruit" value="Apple">Apple
+        <input type="checkbox" name="fruit" value="Grape">Grape
+        <input type="checkbox" name="fruit" value="Orange">Orange
+        <br>
+        <span>Flower:</span>
+        <input type="radio" name="flower" value="Rose">Rose
+        <input type="radio" name="flower" value="Orchid">Orchid
+        <input type="radio" name="flower" value="Jasmine">Jasmine
+        <br>
+        <span>Color:</span>
+        <select name="color">
+            <option value="Red">Red</option>
+            <option value="Green">Green</option>
+            <option value="Blue">Blue</option>
+        </select>
+        <br>
+        <span style="float:left">Animal:</span>
+        <select name="animal" multiple>
+            <option value="Dog">Dog</option>
+            <option value="Cat">Cat</option>
+            <option value="Bird">Bird</option>
+            <option value="Fish">Fish</option>
+        </select>
+        <br>
+        <button>OK</button>
+    </form>
+    <br>
+    <% } else { %>
+    <div id="data">
+        Fruit: <%= frt %> <br>
+        Flower: <%= flw %> <br>
+        Color: <%= clr %> <br>
+        Animal: <%= anm %>
+        <br><br>
+        <a href="javascript: history.back()">ย้อนกลับ</a>
+    </div>
+    <% } %>
+</body>
+</html>

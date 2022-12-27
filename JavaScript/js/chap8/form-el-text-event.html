@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="text" id="text_a2f">
+    </form>
+    <script>
+        let text = document.getElementById('text_a2f')
+        text.onfocus = function(event) {
+            text.placeholder = 'ใส่อักขระ A-F'
+        }
+
+        text.onblur = function(event) {
+            let value = text.value
+            if (value == '') {
+                alert('กรุณาใส่ข้อมูล')
+            }
+        }
+
+        text.onkeydown = function(event) {
+            let k = event.keyCode  //event.which
+            if ((k >= 65 && k <= 71) || (k >= 97 && k <= 102) || k == 8 || k == 46) {
+
+                //ใส่อักขระลงในช่องรับข้อมูลตามปกติ
+            } else {
+                event.preventDefault()
+            }
+        }
+    </script>
+</body>
+</html>

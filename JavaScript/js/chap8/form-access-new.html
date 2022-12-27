@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="form1" name="form1">
+        <input id="one" name="one" value="1">
+        <input id="two" name="two" value="2">
+        <input id="three" name="three" value="3">
+        <input id="four" name="four" value="4">
+    </form>
+    <script>
+        let form = document.getElementById('form1')
+        let one = document.getElementById('one')
+        let two = document.getElementsByName('two')[0]
+        let three = document.querySelector('#three')
+        let four = document.querySelector('[name="four"]')
+        //alert(four.value)
+    </script>
+</body>
+</html>

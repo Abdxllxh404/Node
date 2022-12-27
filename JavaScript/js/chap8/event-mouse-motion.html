@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+    window.onload = () => {
+        let tr = document.querySelectorAll('tr')
+        for (row of tr) {
+            row.onmouseover = function(event) {
+                this.style.background = 'powderblue'
+            }
+
+            row.onmouseout = function(event) {
+                this.style.background = 'inherit'
+            }
+        }
+    }
+    </script>
+</head>
+<body>
+    <table border="1">
+        <tr><td>JavaScript</td><td>Lorem ipsum dolor sit amet</td></tr>
+        <tr><td>ECMAScript</td><td>consectetur adipiscing elit</td></tr>
+        <tr><td>Node.js</td><td>Ut enim ad minim veniam</td></tr>
+        <tr><td>Express.js</td><td>quis nostrud exercitation</td></tr>
+    </table>    
+</body>
+</html>

@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form, div#result, a#index {
+            margin-left: 50px;
+        }
+    </style>
+    <script>
+        function submitForm() {
+            let file = document.querySelector('[type="file"]')
+            let files = file.files
+            if (files.length > 5) {
+                alert('เลือกได้ไม่เกิน 5 ไฟล์')
+                return
+            }
+
+            let maxFileSize = 500 * 1024    //500 KB
+            for (f of files) {
+                if (f.size > maxFileSize) {
+                    alert (`ขนาดของไฟล์ต้องไม่เกิน ${maxFileSize} KB`)
+                    return
+                }                
+            }
+            
+            document.querySelector('form').submit()
+        }
+    </script>
+</head>
+<body>
+    <br><br>
+    <form method="POST" action="/upload-multiple-resize" enctype="multipart/form-data">
+        <label>เลือกได้มากกว่า 1 ไฟล์</label><br><br>
+        <input type="file" name="upfiles" accept="image/*" multiple><br><br>
+        <button type="button" onclick="submitForm()">OK</button>
+    </form>
+    <br>
+    <a id="index" href="/">หน้าแรก</a>
+    <br><br>
+    
+    <% if (locals.fileInfo) { %>
+    <div id="result">
+        <% fileInfo.forEach((f, i) => { %>
+            <hr>
+            <img src="/upload/<%= fileNames[i] %>" style="max-width: 120px;"><br>
+            <%= f.name %><br>
+        <% }) %>
+    </div>
+    <br><br>
+    <% } %>
+</body></html>

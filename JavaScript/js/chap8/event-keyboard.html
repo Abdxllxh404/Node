@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+    function isValidKey(event) {
+        var	keyCode = event.keyCode            //หรือ event.which 
+        if (keyCode < 48 || keyCode > 57) {     //0 => 48, 9 => 57
+            alert("กรุณาเลือกปุ่ม 0 - 9 เท่านั้น")
+        } else {
+            alert('Key: ' + String.fromCharCode(keyCode))
+        }
+    }
+    </script>
+</head>
+<body onkeydown="isValidKey(event)">
+    
+</body>
+</html>

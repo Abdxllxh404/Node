@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form, div#result {
+            width: 450px;
+            margin: auto;
+        }
+
+        input, button {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <br>
+    <% if (!locals.signedIn) { %>
+    <form method="post" action="/signin">
+        <input type="text" name="login" placeholder="Login" value="<%= login %>"><br>
+        <input type="password" name="password" placeholder="Password" value="<%= password %>"><br>
+        <input type="checkbox" name="save" value="checked" <%= save %>>เก็บไว้ในเครื่องนี้ <br><br>
+        <button>ส่งข้อมูล</button>
+    </form>
+    <% } %>
+
+    <div id="result">
+        <% if (login && signedIn) { %>
+		    สวัสดีค่ะ คุณ <%= login %> <br>
+		    <h4>คุณเข้าสู่ระบบแล้ว</h4>
+            <a href="/signout">ออกจากระบบ</a>
+        <% } else if (locals.valid == false) { %>
+            <h4 style="color:red">คุณใส่ Login หรือ Password ไม่ถูกต้อง</h4>
+        <% } %>
+    </div>
+</body>
+</html>

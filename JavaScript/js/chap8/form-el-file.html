@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="file" name="file" id="file" accept="image/*" multiple>
+    </form>
+    <script>
+        let file = document.getElementById('file')
+        file.onchange = function(event) {
+            let str = `จำนวนไฟล์ที่เลือก: ${this.files.length} \n`
+            let nFormat = new Intl.NumberFormat()
+            for (f of this.files) {
+                str += `ชื่อ: ${f.name} , `
+                str += `ขนาด: ${nFormat.format(f.size)} ไบต์ \n`
+            }
+            alert(str)
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>	
+    window.onload = function() {
+        document.querySelector('div').onclick = (event) => {
+            alert('You clicked div')
+            //event.stopPropagation()
+        }
+        
+        document.querySelector('img').onclick = (event) => {
+            alert('You clicked image')
+            //event.stopPropagation()
+        }
+    }
+    </script>
+</head>
+<body>
+    <div style="width:150px; height:150px; border:solid 1px red; padding:10px;"> 
+        <img src="js.png" width="140">
+    </div>
+        
+</body>
+</html>

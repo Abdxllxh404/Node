@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="fm">
+        <textarea name="msg" id="msg" rows="3" cols="30"></textarea>
+    </form>
+    <script>
+        const MAX = 10
+        let textarea = document.getElementById('msg')
+        textarea.placeholder = `ใส่ข้อความไม่เกิน ${MAX} อักขระ`
+        textarea.addEventListener('keydown', function(event) {
+            if (this.value.length >= MAX) {
+                let k = event.keyCode
+                if (k == 8 || k == 46 || k == 37 || k == 39) {
+                    //...                  
+                } else {
+                    event.preventDefault()
+                    alert('จำนวนอักขระเท่ากับค่าสุงสุดแล้ว')
+                }
+            }
+        })
+    </script>
+</body>
+</html>

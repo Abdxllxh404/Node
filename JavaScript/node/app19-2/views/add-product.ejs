@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form, a#index {
+            margin: 20px;
+        }
+        input {
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        function submitForm() {
+            let file = document.querySelector('[type="file"]')
+            let KB = 100
+            let maxFileSize = KB * 1024
+
+            if (file.files.length > 3) {
+                alert('เลือกได้ไม่เกิน 3 ไฟล์')
+                return
+            }
+
+            for (f of file.files) {
+                if (f.size > (maxFileSize)) {
+                    alert(`ขนาดของไฟล์ต้องไม่เกิน ${KB} KB`)
+                    return
+                }
+            }
+
+            document.querySelector('form').submit()
+        }
+    </script>
+</head>
+<body>
+    <br>
+    <%# ถ้ามีข้อความส่งมาจากไฟล์หลัก ให้แสดงข้อความนั้น %>
+    <% if (locals.msg ) { %>
+        <div id="result"><%= msg %></div>
+    <% } %>
+    <form method="post" action="/add-product" enctype="multipart/form-data">
+        <input type="text" name="name" placeholder="ชื่อสินค้า" required><br>
+        <input type="number" name="price" placeholder="ราคา" required><br>
+        
+        <input type="file" name="upfiles" accept="image/*" multiple required><br>
+        <label>ภาพสินค้า ไม่เกิน 3 ภาพ</label><br><br>
+
+        <button type="button" onclick="submitForm()">OK</button>
+    </form>
+    <a id="index" href="/">หน้าแรก</a>
+</body>
+</html>

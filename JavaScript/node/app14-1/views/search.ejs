@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h4></h4>ค้นหา:</h4>
+    <form method="get" action="/search">
+        <input type="text" name="q">
+        <input type="hidden" name="p" value="3">
+        <button>ตกลง</button>
+    </form>
+    <br>
+    <%# ต้องมีข้อมูลส่งเข้ามา จึงจะแสดงผลส่วนนี้  %>
+    <% if (locals.q) { %>
+        <div>ผลการค้นหา: <%= q %> หน้า <%= p %></div>
+    <% } %>
+</body>
+</html>

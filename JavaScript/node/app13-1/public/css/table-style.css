@@ -1,0 +1,19 @@
+
+table {
+    border: white 2px;
+    margin: 10px;
+}
+td {
+    padding: 8px;
+}
+td:first-child {
+    min-width: 50px;
+    background-color: dimgray;
+    color: white;
+    font-weight: bold;
+}
+td:nth-child(2) {
+    min-width: 150px;
+    max-width: 500px;
+    background-color: powderblue;
+}

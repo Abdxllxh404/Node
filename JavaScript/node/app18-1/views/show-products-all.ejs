@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 20px;
+        }
+        table {
+            border-collapse: collapse;
+            border: solid 2px gray;
+        }
+        td, th {
+            padding: 5px;
+        }
+        th {
+            background-color: #cde;
+        }
+    </style>
+</head>
+<body>
+    <a href="/">หน้าแรก</a><br><br>
+    <h4>รายการข้อมูล</h4>
+    <% if (locals.data) { %>
+    <table border="1">
+        <tr><th>ชื่อ</th><th>ราคา</th><th>คงเหลือ</th><th>วันที่เพิ่ม</th><th>รายละเอียด</th></tr>
+        <% 
+        for (d of data) { 
+            let dt = new Date(Date.parse(d.date_added))
+            let df = `${dt.getDate()}-${dt.getMonth() + 1}-${dt.getFullYear()}`
+        %>
+            <tr>
+                <td><%= d.name %></td>
+                <td><%= d.price %></td>
+                <td><%= d.stock %></td>
+                <td><%= df %></td>
+                <td><%= d.description %></td>
+            </tr>
+        <% } %>
+    </table>
+    <% } %>
+</body>
+</html>

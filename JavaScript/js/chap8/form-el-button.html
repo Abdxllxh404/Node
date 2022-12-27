@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+    window.onload = function() {
+        let f1 = document.getElementById('f1')
+        f1.onreset = (event) => {
+           alert('กรุณาใส่ข้อมูลใหม่อีกครั้ง')
+        }
+
+        f1.addEventListener('submit', (event) => {
+            if (!confirm('ยืนยันการส่งข้อมูล?')) {
+                event.preventDefault()
+                alert('การส่งข้อมูลถูกยกเลิก')
+            }
+        })
+    }
+    </script>
+</head>
+<body>
+    <form id="f1" name="f1" method="post" action="http://example.com">
+        <input value="">
+        <button type="reset">Reset</button>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

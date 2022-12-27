@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #title { 
+            color: green; 
+            font-weight: bold;
+            margin: 10px;
+        }
+
+        .box {
+            border: solid 1px gray;
+            padding: 5px;
+            margin: 15px 0;
+        }
+
+        .warning {
+            color: red;
+            border-color: orange !important;
+        }
+    </style>    
+</head>
+<body>
+    <h4 id="title">JavaScript & Node.js</h4>
+    <p class="box">ECMAScript is JavaScript ...</p>
+    <div class="box warning">Lorem Ipsum ...</div>
+    <span style="padding:10px; background-color:lightblue">
+        This is span
+    </span>
+    
+    <script>
+        let h4 = document.getElementById('title')
+        let p = document.getElementsByTagName('p')[0]
+        let div = document.querySelector('div')
+        let span = document.querySelector('span')
+
+        //title.style.color = 'blue'
+        //alert(span.style.color)
+        alert(getComputedStyle(span).color)
+
+        let clss = div.classList //el.style.fontWeight)
+        for (c of clss) {
+            //document.write(c + '<br>')
+        }
+
+    </script>
+</body>
+</html>

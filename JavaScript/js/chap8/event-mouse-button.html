@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+    window.onload = function() {
+        let img = document.querySelector('img')      
+        img.onmousedown = (event) => {
+            let button = event.button
+            let mbt = ''
+            switch(button) {
+                case 0: mbt = 'left'; break
+                case 1: mbt = 'middle'; break
+                case 2: mbt = 'right'; event.returnValue = false; break
+                default: mbt = 'unknown'
+            }
+            alert(mbt)
+        }
+    }
+    </script>
+</head>
+<body>
+    <img src="js.png" width="120"><br><br>
+</body>
+</html>

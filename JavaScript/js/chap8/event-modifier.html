@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+    window.onload = function() {
+        let div = document.getElementById('dv')
+        div.onclick = function(event) {
+            if (event.ctrlKey) {
+                this.style.background = 'red'
+            } else {
+                this.style.background = 'white'
+            }
+        }
+    }
+    </script>
+</head>
+<body>
+    <div id="dv" style="width:300px; height:200px; border:solid 1px gray; margin: 10px;">
+    </div>
+
+    <form name="f" action="https://www.google.com">
+        <input type="text" name="q" onkeypress="if(event.keyCode==13) {f.submit}">
+    </form>
+</body>
+</html>

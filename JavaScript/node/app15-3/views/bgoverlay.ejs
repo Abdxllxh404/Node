@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #overlayBg {
+            position: fixed;
+            display: none;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.3);
+            z-index: 10000;
+        }
+        
+        #overlayTextImg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            -ms-transform: translate(-50%,-50%);
+            text-align: center;
+        }
+    
+        #overlayText {
+            font-size: 1.5rem;
+            color: white;
+        }
+    
+        #overlayImg {
+            width: 50%;
+        }
+    </style>
+    <script src="/axios/axios.min.js"></script>    
+</head>
+<body>
+    <button type="button" onclick="ajaxSubmit()">Test Overlay</button>
+
+    <div id="overlayBg"> <!-- onclick="overlayOff() -->
+        <div id="overlayTextImg">
+            <img id="overlayImg" src="/images/clock-loading.gif">
+            <br><br>
+            <div id="overlayText">กำลังโหลด</div>
+        </div>
+    </div>
+    
+    <script>
+    function overlayOn() {
+        document.querySelector('#overlayBg').style.display = 'block'
+    }
+    
+    function overlayOff() {
+        document.querySelector('#overlayBg').style.display = 'none'
+    } 
+    
+    function ajaxSubmit() {
+        let p = new URLSearchParams()
+        p.append('test', 1)
+        axios({
+            url: '/bgoverlay',
+            method: 'post',
+            data: p,
+            timeout: 5000,
+        }).then(result => {
+            overlayOff()
+            //หน่วงเวลาการแสดง alert() ออกไป เพื่อให้ background overlay ถูกปิดลงไปก่อน
+            //มิฉะนั้น alert จะปรากฏก่อนที่ background จะปิด (ขึ้นกับเราเองว่าต้องการแบบไหน)
+            setTimeout(() => { 
+                alert('AJAX Done!')
+            }, 100)
+        }).catch(error => {
+            overlayOff()
+            alert(error)
+        })
+    
+        overlayOn()
+    }    
+    </script>        
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <b>Flower:</b>
+        <input type="checkbox" id="rose" value="กุหลาบ" checked>กุหลาบ
+        <input type="checkbox" id="jasmine" value="มะลิ">มะลิ
+        <input type="checkbox" id="orchid" value="กล้วยไม้" checked>กล้วยไม้
+        <br><br>
+
+        <b>Fruit:</b>
+        <input type="radio" name="fruit" value="ทุเรียน">ทุเรียน
+        <input type="radio" name="fruit" value="เงาะ">เงาะ
+        <input type="radio" name="fruit" value="ลำไย">ลำไย
+        <input type="radio" name="fruit" value="องุ่น">องุ่น
+        <br><br>
+
+        <button type="button" onclick="checkSelection()">ตรวจสอบการที่เลือก</button>
+    </form>
+
+    <script>
+        let button = document.getElementById('button')
+        let checkbox = document.querySelectorAll('[type="checkbox"]')
+        let radio = document.getElementsByName('fruit')
+
+        function checkSelection() {
+            //checkbox เลือกได้รายการ เราอาจเก็บรายการที่ถูกเลือกไว้ในอาร์เรย์
+            let flowers = []
+            for (chk of checkbox) {
+                if (chk.checked) {
+                    flowers.push(chk.value)
+                }
+            }
+            alert(flowers.join(', '))
+
+            for (rdo of radio) {
+                if (rdo.checked) {
+                    alert(rdo.value)
+                    break //ออกจากลูปได้ เพราะเลือกได้เพียงรายการเดียว
+                }
+            }
+        }
+
+        for (chk of checkbox) {
+            chk.addEventListener('change', checkSelection)
+        }
+
+        for (rdo of radio) {
+            rdo.onchange = checkSelection
+        }
+
+    </script>
+</body>
+</html>

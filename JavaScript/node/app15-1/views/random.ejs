@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+    </style>
+    <script src="/axios/axios.min.js"></script>
+</head>
+<body>
+    <br><br>
+    <button type="button" onclick="ajaxSubmit()">Random</button>
+
+    <script>    
+    function ajaxSubmit() {
+        axios({
+                url: '/random',	
+                method: 'get',
+                params: {min: 1, max: 10},  
+                timeout: 3000,
+            })
+            .then(response => {
+                alert('เลขสุ่มที่ได้: ' + response.data.result)
+            })
+            .catch(error => {
+                alert(error)
+            })
+    }    
+    </script>
+</body>
+</html>

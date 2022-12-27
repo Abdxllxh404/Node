@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+    window.onload = function() {
+        let f1 = document.document.getElementById('f1')
+        f1.onreset = (event) => {
+           alert('Please re-fill again')
+        }
+
+        f1.addEventListener('submit', (event) => {
+            if (!confirm('Are yoyu sure?')) {
+                event.preventDefault()
+                alert('')
+            }
+        })
+    }
+    </script>
+</head>
+<body>
+    <form id="f1" name="f1" method="post" action="http://example.com">
+        <input name='a' id="aid" value="A">
+        <input id="b">
+        <button type="reset">Reset</button>
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+        let form = document.getElementById('f1')  //document.forms.f1
+        let engine = 'google'
+
+        if (engine == 'google') {
+            form.action = 'https://google.com'
+        } else if (engine == 'bing') {
+            form.action = 'https://bing.com'
+        }
+
+        for (i = 0; i < form.length; i++) {  
+            document.write(form.elements[i].id)
+        }
+
+        for (el of form.elements) {
+            if (el.type == 'text') {
+                document.write(el.value)
+            }
+        }
+    </script>
+</body>
+</html>

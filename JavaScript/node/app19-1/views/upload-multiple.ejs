@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form, div#result, a#index {
+            margin-left: 50px;
+        }
+    </style>
+    <script>
+        function submitForm() {
+            let file = document.querySelector('[type="file"]')
+            let files = file.files
+            if (files.length > 5) {
+                alert('เลือกได้ไม่เกิน 5 ไฟล์')
+                return
+            }
+
+            let maxFileSize = 500 * 1024    //500 KB
+            for (f of files) {
+                if (f.size > maxFileSize) {
+                    alert (`ขนาดของไฟล์ต้องไม่เกิน ${maxFileSize} KB`)
+                    return
+                }
+            }
+            
+            document.querySelector('form').submit()
+        }
+    </script>
+</head>
+<body>
+    <br><br>
+    <form method="POST" action="/upload-multiple" enctype="multipart/form-data">
+        <label>เลือกได้มากกว่า 1 ไฟล์</label><br><br>
+        <input type="file" name="upfiles" multiple><br><br>
+        <button type="button" onclick="submitForm()">OK</button>
+    </form>
+    <br>
+    <a id="index" href="/">หน้าแรก</a>
+    <br><br>
+    
+    <% if (locals.fileInfo) { %>
+    <div id="result">
+        <% fileInfo.forEach((f, i) => { %>
+            <hr>
+            <%# ถ้าเป็นรูปภาพ ให้แสดงด้วยแท็ก <img>  %>
+            <% if (f.type.match('image/')) { %>
+                <img src="/upload/<%= fileNames[i] %>" style="max-height: 60px;"><br>
+            
+            <%# ถ้าเป็นไฟล์ชนิดอื่น ให้สร้างลิงก์เพื่อดาวน์โหลด  %>
+            <% } else { %>
+                <a href="/upload/<%= fileNames[i] %>"><%= fileNames[i] %></a><br>
+            <% } %>
+            name: <%= f.name %><br>
+            type: <%= f.type %><br>
+            size: <%= f.size %> bytes<br>
+        <% }) %>
+    </div>
+    <br><br>
+    <% } %>
+</body></html>

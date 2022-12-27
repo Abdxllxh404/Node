@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <select name="color" id="color">
+            <option value="แดง">แดง</option>
+            <option value="เขียว">เขียว</option>
+            <option value="น้ำเงิน">น้ำเงิน</option>
+        </select>
+        <br><br>
+        <select name="country" id="country" size="4" multiple onchange="multipleSelection()">
+            <option value="th" selected>Thailand</option>
+            <option value="jp">Japan</option>
+            <option value="uk" selected>United Kingdom</option>
+            <option value="us">USA</option>
+            <option value="ca">Canada</option>
+        </select>
+    </form>
+
+    <script>
+        let color = document.getElementById('color')
+        let white = new Option('white', 'ขาว')   //text, value
+        color.add(white)           //เพิ่มเป็นรายการสุดท้าย
+
+        let yellow = document.createElement('option')
+        yellow.value = 'yellow'    //yellow.setAttribute('value', 'yellow')
+        yellow.text = 'เหลือง'      //yellow.setAttribute('text', 'เหลือง')
+        color.add(yellow, 3)       //เพิ่ม (แทรก) ลงในลำดับที่ 3 (รายการแรกลำดับเป็น 0)
+
+
+        //color.options[2] = yellow     //ถ้าต้องการแทนที่รายการลำดับที่ 2
+        
+        color.selectedIndex = 2
+                
+        //alert(color.length)
+
+    function multipleSelection() {
+        let country = document.getElementById('country')
+        if (country.multiple) {
+            let selectedValues = []
+            
+            for (opt of country.options) {
+                if (opt.selected) {
+                    selectedValues.push(opt.value)
+                }
+            }
+            /*
+            for (i = 0 i < country.length i++) {
+                if (country.options[i].selected) {
+                    selectedValues.push(country.options[i].value)
+                }
+            }
+            */
+            alert(selectedValues.join(', '))
+        }
+    }
+    </script>
+</body>
+</html>

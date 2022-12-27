@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form, div#info {
+            width: 500px;
+            margin: auto;
+        }
+        input, textarea {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <br>
+    <% if (!locals.data) { %> <%# ถ้าไม่มีข้อมูลส่งเข้า ให้แสดงฟอร์ม %>
+    <form method="post" action="/add-product">
+        <input type="text" name="product" placeholder="ชื่อสินค้า"><br>
+        <input type="number" name="price" step="any" placeholder="ราคา"><br>
+        <input type="number" name="quantity" placeholder="จำนวน"><br>
+        <textarea name="description" rows="2" cols="30" placeholder="รายละเอียด"></textarea><br>
+        <input type="date" name="date_add"> (วันที่เพิ่มสินค้า) <br>
+        <button>เพิ่มข้อมูล</button>
+    </form><br>
+    
+    <% } else { %>
+    <div id="info">
+        <b>ข้อมูลสินค้า</b> <br>
+        ชื่อสินค้า: <%= product %> <br>
+        ราคา: <%= price %> <br>
+        จำนวน: <%= quantity %> <br>
+        รายละเอียด: <%= descr %> <br>
+        วันที่เพิ่มสินค้า: <%= date_add %> <br><br>
+        <a href="javascript: history.back()">ย้อนกลับ</a>
+    </div>
+    <% } %>
+</body>
+</html>

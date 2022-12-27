@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <%- include('layouts/head') %>
+    <style>
+        th, td:nth-child(1), td:nth-child(4) {
+            text-align: center;
+        }
+        th:nth-child(1) {
+            width: 160px !important;
+        }
+        th:nth-child(3) {
+            width: 150px !important;
+        }
+        th:nth-child(4) {
+            width: 80px !important;
+        }
+        td a {
+            text-decoration: none;
+        }
+        td a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<%- include('layouts/nav') %>
+
+<div id="container" class="my-5 mx-auto p-4">
+	<h5 class="text-center">คำถามทั้งหมด</h5>
+	<% if (locals.data) { %>
+	<table class="table table-bordered">
+    <thead class="table-dark">
+		<tr><th>วันเดือนปี</th><th>คำถาม</th><th>ผู้ถาม</th><th>คำตอบ</th></tr>
+    </thead>
+    <tbody>
+        <%
+        const m = ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 
+                    'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 
+                    'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม']
+
+		for (d of data) {
+            let dt = new Date(Date.parse(d.date_posted))
+			let df = `${dt.getDate()} ${m[dt.getMonth()]} ${dt.getFullYear() + 543}`
+		%>
+			<tr>
+				<td><%= df %></td>
+				<td>
+                    <a href="/webboard/question-detail-and-answers/<%= d._id %>"><%= d.question %></a></td>
+				<td><%= d.questioner %></td>
+				<td><%= d.num_answers %></td>
+			</tr>
+        <% } %>
+    </tbody>
+    </table>
+    <div class="text-center mt-3 my-5">
+        <%- pageLink %>    
+    </div>
+    <% } %>
+</div>    
+<%- include('layouts/footer') %>
+</body>
+</html>

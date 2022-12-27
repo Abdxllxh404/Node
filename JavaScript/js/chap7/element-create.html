@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>One</li>
+        <li>Two</li>
+    </ul>
+
+    <script>
+        let a = document.createElement('a')
+        a.id = 'link1'
+        a.href = 'http://www.example.com'
+        a.setAttribute('target', '_blank')
+        a.innerHTML = 'Test'
+        document.body.appendChild(a)
+        
+        let ul = document.querySelector('ul')
+        let li1 = document.querySelector('li:first-child')
+        let li0 = document.createElement('li')
+        li0.innerHTML = 'Zero'
+        ul.insertBefore(li0, li1)
+
+        let li3 = document.createElement('li')
+        li3.innerHTML = 'Three'
+        ul.appendChild(li3)
+        
+        let li2 = document.querySelector('li:nth-child(2)')
+        ul.removeChild(li2)
+
+    </script>
+</body>
+</html>

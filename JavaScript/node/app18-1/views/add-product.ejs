@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        label {
+            display: inline-block;
+            width: 150px;
+            margin-bottom: 15px;
+            margin-right: 5px;
+            text-align: right;
+        }
+
+        a, button, div#result {
+            margin-left: 160px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        หลังการบันทึกข้อมูล เราจะกลับมาแสดงเพจนี้อีก
+        เพื่อให้ผู้ใช้ สามารถเพิ่มข้อมูลรายการถัดไปได้
+    -->
+    <div id="result">
+        <% if (locals.result && result == true) { %>
+            ข้อมูลถูกบันทึกแล้ว
+        <% } else if (locals.result && result == false) { %>
+            <span style="color:red">เกิดข้อผิดพลาด ข้อมูลไม่ถูกบันทึก</span>
+        <% } %>
+    </div>
+
+    <h4 style="margin-left: 160px;">เพิ่มสินค้าใหม่</h4>
+    <form method="post" action="/add-product">
+        <label>ชื่อสินค้า</label>
+        <input type="text" name="name" required><br>
+
+        <label>ราคา</label>
+        <input type="number" name="price" min="0" required><br>
+        
+        <label>คงเหลือ</label>
+        <input type="number" name="stock" min="0" required><br>
+        <%
+            //กำหนดวันเดือนปีปัจจุบันในแบบ YYYY-MM-DD เท่านั้น
+            //เพื่อนำไปเป็นเติมเป็นค่าล่วงหน้าให้แก่อิลิเมนต์ชนิด date
+            let dt = new Date()
+            let m = dt.getMonth() + 1
+            //ถ้าเป็นเลขหลักเดียว ให้เติม 0 ข้างหน้า
+            m = (m > 10) ? m : '0'+m
+            let d = dt.getDate()
+            d = (d > 10) ? d : '0'+d
+            let today = `${dt.getFullYear()}-${m}-${d}`
+        %>
+        <label>วันที่เพิ่มสินค้า</label>
+        <input type="date" name="date_added" value="<%= today %>" required><br>
+
+        <label style="float: left;">รายละเอียดสินค้า</label>
+        <textarea name="description" cols="30" rows="3"></textarea><br><br>
+
+        <button>ตกลง</button>
+    </form>
+    <br><br>
+    <a href="/">หน้าแรก</a><br>
+</body>
+</html>

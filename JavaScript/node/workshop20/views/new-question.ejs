@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <%- include('layouts/head') %>
+    <style>
+        form {
+            display: inline-block;
+            width: 450px;
+            background-color: #cde;
+        }
+
+        input[type="text"], textarea {
+            margin-bottom: 10px;
+            margin-top: 5px;
+        }
+
+        #img_captcha {
+            cursor: pointer;
+        }
+
+        div.alert {
+            width: 450px;
+        }
+    </style>
+</head>
+<body>
+<%- include('layouts/nav') %>
+
+<div id="container" class="my-5 pt-4 mx-auto text-center">
+    <% if (locals.msg) { %>
+        <div class="alert alert-warning alert-dismissible fade show mx-auto">
+            <%= msg %>
+            <span class="close" data-dismiss="alert" aria-hidden="true">&times;</span>
+        </div>
+    <% } %>
+    <% let data = locals.data || {} %>
+
+    <h5 class="mb-3">ตั้งคำถามใหม่</h5>
+    <form method="post" action="/webboard/new-question" enctype="multipart/form-data" class="text-left p-3">
+        <label>คำถาม</label><br>
+        <input type="text" name="question" maxlength="150" value="<%= data.question || '' %>" required class="w-100 form form-input"><br>
+
+        <label>รายละเอียด</label><br>
+        <textarea name="detail" rows="3" class="w-100" required><%= data.detail || '' %></textarea><br>
+
+        <label>ภาพประกอบ (ถ้ามี)</label><br>
+        <input type="file" name="upfile" accept="image/*"><br><br>
+
+        <div class="d-inline-block">
+            <label>อักขระที่ปรากฏในภาพ</label><br>
+            <input type="text" name="captcha" required>
+        </div>
+
+        <div class="float-right mr-4">
+            <img src="/captcha" id="img_captcha" onclick="this.src=this.src+'?'+Math.random()"><br>
+            <span>คลิกที่ภาพเพื่อโหลดใหม่</span>
+        </div>
+
+        <div class="mt-3">  
+            <label>ชื่อของท่าน</label><br>
+            <input type="text" name="questioner" maxlength="30" value="<%= data.questioner || '' %>" required>
+            <button class="btn btn-sm btn-primary ml-5">ส่งข้อมูล</button>
+        </div>    
+    </form>
+</div>
+
+<%- include('layouts/footer') %>
+</body>
+</html>

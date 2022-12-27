@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="bt">Button</button><br><br>
+    <img src="js.png" width="80"><br><br>
+    <a href=#>Click Me</a>
+    <script>
+        let btn = document.getElementById('bt')
+        btn.addEventListener('click', function() {
+            alert('Thanks')
+        })
+        
+        let img = document.querySelector('img')
+        img.addEventListener('load', () => {
+            alert('Image loaded complete')
+        })
+
+        let a = document.querySelector('a')
+		a.addEventListener('click', linkClick)
+		function linkClick() {
+			alert('You clicked link')
+		}
+
+        //a.removeEventListener('click', linkClick)
+    </script>	    
+</body>
+</html>
