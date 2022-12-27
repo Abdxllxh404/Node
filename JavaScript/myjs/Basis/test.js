@@ -2,21 +2,20 @@
 console.log(null == false)
 console.log(undefined == false)
 console.log(NaN == false)
-
 console.log(!false)
 console.log(!null)
 console.log(!undefined)
 console.log(!NaN)
 */
 
-let a
+let a;
 if (a == undefined) {
-    console.log('Error')
+  console.log('Error');
 }
 
-let b
+let b;
 if (!b) {
-    console.log('Error')
+  console.log('Error');
 }
 
 /*
@@ -28,7 +27,3 @@ if ((year % 400 == 0) || ((year % 4 == 0) && (year % 100 != 0))) {
     console.log (year + ' is not a leap year')
 }
 */
-
-
-
-
