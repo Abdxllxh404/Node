@@ -57,7 +57,6 @@ let thaiDate = {
   getShortDate() {
     return `${this.day()}/${this.month()}/${this.year() + 543}`;
   },
-
   getFullDate() {
     return `${this.day()} ${this.thaiMonths[this.month() - 1]} ${
       this.year() + 543
