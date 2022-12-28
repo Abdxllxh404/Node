@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .green { color:green }
+    </style>
+</head>
+<body>
+    <div id="dv1" class="green">Hello</div>
+
+    <script>
+        let el = document.getElementById('dv1')
+        el.setAttribute('class', 'red')
+        alert(el.getAttribute('class'))            //red
+
+        el.removeAttribute('class')
+        document.write(el.getAttribute('class'))   //null
+
+
+    </script>
+</body>
+</html>

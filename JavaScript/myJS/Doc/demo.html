@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="checkbox" value="x">
+    <input type="checkbox" readonly value="y">
+
+    <div id="dv1"><span>1</span><span>2</span></div>
+    <div id="dv2"><span>2</span><span>2</span><span>3</span></div>
+    <div id="dv"><span>1</span><span>2</span><span>3</span></div>
+
+    
+    <script>
+
+        //alert(document.querySelector('').value)
+
+        //alert(document.querySelector('#dv2 > span').innerHTML)
+
+        alert(document.querySelector('span:nth-child(odd)').innerHTML)  
+        //alert(document.querySelector('#dv:nth-child(2)').innerHTML)  
+    </script>
+
+    <ul class="nav1">
+        <li>One</li>
+        <li>Two</li>
+        <li>Three</li>
+    </ul>
+    <ul class="nav2">
+        <li>Four</li>
+        <li>Five</li>
+    </ul>	
+
+    <script>
+        let list1 = document.querySelectorAll('li')
+        alert(list1.length)	//5
+        
+        let list2 = document.querySelectorAll('.nav2 > li')
+        for (li of list2) {
+            document.write(li.innerHTML + '<br>')
+        }
+    </script>
+
+</body>
+</html>
